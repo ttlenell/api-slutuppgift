@@ -1,10 +1,11 @@
 import React from 'react';
+import './ResultDisplay.css';
 
 const ResultDisplay = (props) => (
-    <div>
-        Namn:{props.name}<br/>
-        Klass:{props.unit}<br/>
-        Betyg:{props.grade}<br/><hr/>
+    <div id="resultDisplay">
+        Namn: {props.name}<br/>
+        Ålder: {props.age}<br/>
+        Yrke: {props.profession}<br/><hr/>
     </div>
 )
 

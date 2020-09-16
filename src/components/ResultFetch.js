@@ -34,8 +34,8 @@ componentDidMount() {
                     <ResultDisplay
                      key={result.id}
                      name={result.name}
-                     unit={result.grade}
-                     grade={result.grade}
+                     age={result.age}
+                     profession={result.profession}
                      
                      />
                 ))}

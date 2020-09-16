@@ -1,52 +1,57 @@
 import React from 'react';
 import results from "../apis/instance";
+import './ResultsAdd.css';
+import ResultFetch from './ResultFetch';
 
 class ResultsAdd extends React.Component {
 
     state = {
         name: "",
-        unit: "",
-        grade: ""
+        age: "",
+        profession: ""
     }
 
     postDataHandler = (event) => {
         event.preventDefault();
         const Data = {
             name: this.state.name,
-            unit: this.state.unit,
-            grade: this.state.grade
+            age: this.state.age,
+            profession: this.state.profession
         }
         results.post('/results.json', Data).then(response => {
             console.log(response)
         })
+        
     } 
 
 
 
     render() {
         return ( 
-            <div className="ui placeholder segment">
+            
+            <div className="ui placeholder segment" id="uiPlaceholder">
+                <h1>Skriv in namn och personlig data</h1>
                 <div className="ui one column very relaxed stackable grid">
-                    <h3>Blablabla</h3>
+                   
                     <form className="ui form" onSubmit={this.postDataHandler}>
                         <div className="field">
-                            <label>Namn:</label>
-                            <input type="text" placeholder="Name"
+                            <label>Namn: </label>
+                            <input type="text" placeholder="Namn"
                             value={this.state.name}
                             onChange={(event) => this.setState({name: event.target.value})} />
                         </div>
                         <div className="field">
-                            <label>Klass:</label>
-                            <input type="text" placeholder="Unit" 
-                            value={this.state.unit}
-                            onChange={(event) => this.setState({unit: event.target.value})}
+                            <label>Ålder: </label>
+                            <input type="text" placeholder="Ålder" 
+                            value={this.state.age}
+                            onChange={(event) => this.setState({age: event.target.value})}
                             />
                         </div>
                         <div className="field">
-                            <label>Betyg:</label>
-                            <input type="text" placeholder="Grade" 
+                            <label>Yrke: </label>
+                            <input type="text" placeholder="Yrke" 
                             value={this.state.grade}
-                            onChange={(event) => this.setState({grade: event.target.value})} 
+                            onChange={(event) => this.setState({profession: event.target.value})} 
                             />
                         </div>
                         <button className="ui blue submit button">Submit</button>
