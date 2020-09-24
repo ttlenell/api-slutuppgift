@@ -1,7 +1,7 @@
 import React from 'react';
 import results from "../apis/instance";
 import './ResultsAdd.css';
-import ResultFetch from './ResultFetch';
+
 
 class ResultsAdd extends React.Component {
 
@@ -12,14 +12,18 @@ class ResultsAdd extends React.Component {
     }
 
     postDataHandler = (event) => {
-        event.preventDefault();
-        const Data = {
+        event.preventDefault(); 
+        var Data = {
+    
             name: this.state.name,
             age: this.state.age,
             profession: this.state.profession
         }
         results.post('/results.json', Data).then(response => {
+            if(response.status === 200)
             console.log(response)
+            Data.id = response.data.name
+            this.props.addResultToState(Data)
         })
         
     } 
@@ -59,6 +63,7 @@ class ResultsAdd extends React.Component {
                     </form>
                 </div>
             </div>
+            
         )
     }
 }
